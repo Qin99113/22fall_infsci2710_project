@@ -1,0 +1,203 @@
+#logo {
+	height: 60px;
+	width: 60px;
+	margin-left: 20px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-right: 20px;
+	float: left;
+}
+
+#title {
+	/*background: url("/static/images/title_bg.jpeg");*/
+	background-color: cornsilk;
+	height: 84px;
+	position: fixed;
+	top:0px;
+	display: flex;
+	width: 100%;
+	margin-bottom: 0px;
+	z-index: 2;
+}
+.home_btn{
+	height: 64px;
+	margin-bottom: 10px;
+	margin-top:10px;
+	padding: 10px;
+	/*background-color: #f1f1f1;*/
+	/*border-radius: 40px;*/
+	/*background-color: bisque;*/
+
+
+}
+.home_btn a{
+	position: relative;
+	text-align: center;
+	text-decoration: none;
+	font-family: "Palace Script MT";
+	font-size: 35px;
+	color: sandybrown;
+
+}
+.home_btn a:hover{
+	color: chocolate;
+}
+
+
+.Search{
+	width: 70%;
+}
+.Search form {
+
+	padding:15px;
+	height: 100%;
+
+}
+.Search input {
+	height: 42px;
+	width: 0;
+	padding: 0 42px 0 15px;
+	border: none;
+	border-bottom: 2px solid transparent;
+	outline: none;
+	background: transparent;
+	transition: .4s cubic-bezier(0, 0.8, 0, 1);
+	position: relative;
+	top: 0;
+	right:0;
+	float: right;
+	z-index: 2;
+	font-family: "Palace Script MT";
+	font-size:20px;
+}
+.Search input:focus {
+  	width: 300px;
+  	z-index: 1;
+  	border-bottom: 2px solid moccasin;
+}
+.Search button {
+  	background: sandybrown;
+  	border: none;
+  	height: 42px;
+  	width: 42px;
+  	position: relative;
+  	top: 0;
+  	right: 0;
+  	float: right;
+	margin-right: -15px;
+  	cursor: pointer;
+}
+
+
+.Search button:before {
+  	content: "\f002";
+  	font-family: FontAwesome;
+  	font-size: 16px;
+  	color: #F9F0DA;
+}
+
+
+
+.dropbtn {
+	background-color: cornsilk;
+	color: sandybrown;
+	padding: 16px;
+	font-family: "Palace Script MT";
+	font-size: 20px;
+	border: none;
+	cursor: pointer;
+}
+
+.dropdown {
+	width: 15%;
+	position: relative;
+	float: left;
+    left:25px;
+
+}
+
+.dropdown-content  {
+	display: none;
+	position: absolute;
+	z-index: 10;
+	background-color: lightgoldenrodyellow;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+	font-family: 'AppleSystemUIFont';
+	font-size: 14px;
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+}
+
+.dropdown-content a:hover {
+	background-color: moccasin;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+.dropbtn:hover {
+	color: chocolate;
+
+}
+
+#signInButton {
+	width: 15%;
+	display: flex;
+	color: yellow;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: 20px;
+	margin-right: 20px;
+	float: left;
+}
+#signInButton img{
+
+	width: 40px;
+	height: 40px;
+}
+#signInButton a{
+	position: relative;
+	bottom: 0;
+	text-align: center;
+	padding: 10px;
+
+}
+
+#cart {
+	width: 15%;
+	color: white;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	float: left;
+}
+#cart img{
+	width: 40px;
+	height: 40px;
+}
+#cartIcon {
+	height: 30px;
+	width: 30px;
+
+}
+#cart a, #signInButton a{
+	text-decoration: none;
+	font-family: "Palace Script MT";
+	color: sandybrown;
+
+}
+#signInButton a:hover{
+	color: chocolate;
+}
+#cart a:hover{
+	color: chocolate;
+
+}
+
+
