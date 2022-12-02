@@ -1,0 +1,127 @@
+@import url("https://fonts.googleapis.com/css?family=Anton&display=swap");
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-kerning: auto;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  /* make the body fits our viewport */
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  background-color: #1d1e22;
+  font-family: "Anton", sans-serif;
+}
+
+#texture-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  z-index:0;
+}
+
+#canvas {
+  /* make the canvas wrapper fits the document */
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.plane {
+  /* define the size of your plane */
+  width: 100%;
+  height: 100vh;
+  z-index: 100;
+}
+
+.plane img {
+  /* hide the img element */
+  display: none;
+}
+
+.titles__slide {
+  position: absolute;
+  padding: 1rem;
+  display: grid;
+  grid-template-areas: "left right";
+  grid-template-columns: repeat(1, 1fr);
+  height: 100vh;
+  width: 100%;
+  font-size: calc((6vmax + 1rem) * 9 / 16);
+  letter-spacing: 0.1rem;
+  color: transparent;
+  align-items: end;
+}
+
+.title__slide {
+  grid-area: right;
+  text-transform: uppercase;
+}
+
+@media (min-width: 600px) {
+  .titles__slide {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.title__slide .text-overflow {
+  overflow: hidden;
+}
+
+.title__slide-1,
+.title__slide-2 {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 1);
+}
+
+.title__slide-3 {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 1);
+}
+
+.text__item {
+  padding-left: 15px;
+  padding-right: 15px;
+  display: block;
+}
+
+.text__item-1 {
+  text-align: left;
+}
+
+.text__item-2 {
+  text-align: center;
+}
+
+.text__item-3 {
+  text-align: right;
+}
+
+.is-hidden .text__item {
+  transform: translate(0, 100%);
+}
+
+.is-hidden .text__item-2 {
+  transform: translate(0, -100%);
+}
+
+@media screen and (min-width: 960px) {
+  .title__slide {
+    -webkit-text-stroke-width: 1.3px;
+  }
+
+  .title__slide-3 {
+    -webkit-text-stroke-width: 1.3px;
+  }
+}
