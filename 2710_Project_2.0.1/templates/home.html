@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta name="viewport" content="width=1024">
+<title>Welcome</title>
+<link rel="stylesheet" href={{ url_for('static', filename='css/home.css') }} />
+<link rel="stylesheet" href={{ url_for('static', filename='css/topStyle.css') }} />
+<link rel="stylesheet" href={{ url_for('static', filename='css/footer.css') }} />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="container">
+        <div id="title">
+            <a href="/logout">
+                <img id="logo" src= {{ url_for('static', filename='images/logo.png') }} />
+            </a>
+            <div class="home_btn">
+                <a href="/home">
+                    <strong>HOME~</strong>
+                </a>
+            </div>
+            <div class = "Search">
+                <form>
+		            <input id="searchBox" type="text" name="searchQuery" placeholder="SEARCH....">
+		            <button id="searchButton" type="submit" value="Search"></button>
+		        </form>
+            </div>
+
+            {% if not loggedIn %}
+            <div id="signInButton">
+                <img id = "client " src= {{ url_for('static', filename='images/client.png')}}/>
+                <a class="link" href="/loginForm">SIGN IN</a>
+            </div>
+            {% else %}
+            <div class="dropdown">
+                <button class="dropbtn">Hello, <br>{{firstName}}</button>
+                <div class="dropdown-content">
+                    <a href="/account/orders">Your orders</a>
+                    <a href="/account/profile">Your profile</a>
+                    <hr>
+                    <a href="/logout">Sign Out</a>
+                </div>
+            </div>
+            {% endif %}
+        <div id="cart">
+            <a class="link" href="/cart">
+                <img src={{url_for('static', filename='images/shoppingCart.png')}} id="cartIcon" />
+                CART {{noOfItems}}
+            </a>
+        </div>
+        </div>
+
+        <div class="display">
+            <div class="displayMenu">
+                <div class="by_product">
+                        <buttom class ="naviItems" > Shop by Products </buttom>
+                        <div class="product_kind">
+                            <ul>
+                                {% for row in categoryData %}
+                                    <li><a href="/displayCategory?productKindId={{row[0]}}">{{row[1]}}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                </div>
+                <div class="by_scent">
+                        <buttom class ="naviItems" > Shop by Scent </buttom>
+                        <div class="scent">
+                            <ul>
+                                {% for row in scentData %}
+                                    <li><a href="/displayScent?scent_id={{row[0]}}">{{row[1]}}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                </div>
+                <div class="stores">
+                        <buttom class ="naviItems" > Our Stores </buttom>
+                </div>
+                <div class="contact">
+                        <buttom class ="naviItems" onclick = window.location.href="/contactUs.html"> Contact us </buttom>
+                </div>
+            </div>
+
+            <div class="displayItem">
+                <h2>You May Also Like</h2>
+                {% for data in itemData %}
+                <table>
+                    <tr id="productName">
+                        {% for row in data %}
+                        <td>
+                            {{row[1]}}
+                        </td>
+                        {% endfor %}
+                    </tr>
+                    <tr id="productImage">
+                        {% for row in data %}
+                        <td>
+                            <a href="/productDescription?productId={{row[0]}}">
+                                <img src={{ url_for('static', filename='uploads/' + row[4]) }} id="itemImage" />
+                            </a>
+                        </td>
+                        {% endfor %}
+                    </tr>
+                    <tr id="productPrice">
+                        {% for row in data %}
+                        <td>
+                            ${{row[2]}}
+                        </td>
+                        {% endfor %}
+                    </tr>
+                </table>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+    <footer>
+        <div class="footer_container">
+            <p>@2022 INFSCI 2710 GROUP PROJECT</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
+
