@@ -1,0 +1,33 @@
+#profile_frame{
+
+    width: 800px;
+    height: 500px;
+    padding: 13px;
+    position: absolute;
+    left: 35%;
+    top: 40%;
+    margin-left: -200px;
+    margin-top: -200px;
+
+    background-color: rgba(240, 255, 255, 0.5);
+
+    border-radius: 40px;
+    text-align: center;
+    overflow:scroll;
+
+}
+#btn_save{
+    font-size: 14px;
+    font-family: "Times New Roman";
+
+    width: 120px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+
+    color: white;
+    background-color: burlywood;
+    border-radius: 6px;
+    border: 0;
+
+}
