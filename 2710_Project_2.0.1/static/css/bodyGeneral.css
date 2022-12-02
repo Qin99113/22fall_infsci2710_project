@@ -1,0 +1,17 @@
+html,body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+body{
+   background: blanchedalmond;
+}
+#cartItems, .display_product, .display_profile, .display_frame, .display_store
+{
+    width: 98%;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 100%;
+	position:relative;
+	top:84px;
+}
