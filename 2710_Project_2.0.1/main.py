@@ -41,7 +41,7 @@ def root():
         cur.execute('SELECT scent_id, scent_name FROM scent')
         scentData = cur.fetchall()
     itemData = parse(itemData)
-    return render_template('cover.html', itemData=itemData, loggedIn=loggedIn, firstName=firstName, noOfItems=noOfItems,
+    return render_template('index.html', itemData=itemData, loggedIn=loggedIn, firstName=firstName, noOfItems=noOfItems,
                            categoryData=categoryData, scentData=scentData)
 
 
