@@ -1,0 +1,15 @@
+.display_product{
+
+  overflow: scroll;
+
+}
+.display_product table{
+  width: 80%;
+  margin: auto;
+}
+.display_product table tr td{
+  width: 400px;
+  text-align: center;
+  margin: auto;
+}
+
