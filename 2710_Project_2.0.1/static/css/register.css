@@ -1,0 +1,77 @@
+#register_frame{
+    width: 800px;
+    height: 400px;
+    padding: 13px;
+    position: absolute;
+    left: 35%;
+    top: 50%;
+    margin-left: -200px;
+    margin-top: -200px;
+
+    background-color: rgba(240, 255, 255, 0.5);
+
+    border-radius: 40px;
+    text-align: center;
+    overflow:scroll;
+}
+h1{
+    color:  burlywood;
+    margin:30px;
+    font-family: "Palace Script MT";
+    font-size: 60px;
+    text-align: center;
+
+}
+form p > * {
+    display: inline-block;
+    vertical-align: middle;
+
+
+}
+
+.label_input {
+    font-size: 14px;
+    font-family: "Times New Roman";
+
+    width: 150px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+
+    color: white;
+    background-color: burlywood;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.text_field {
+    width: 300px;
+    height: 40px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: 0;
+}
+
+#image_logo {
+    margin-top: 22px;
+
+}
+#image_logo img{
+    width: 40px;
+    height: 40px;
+}
+#btn_register {
+    font-size: 14px;
+    font-family: "Times New Roman";
+
+    width: 120px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+
+    color: white;
+    background-color: burlywood;
+    border-radius: 6px;
+    border: 0;
+
+}
