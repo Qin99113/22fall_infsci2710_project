@@ -1,0 +1,79 @@
+<html>
+<head>
+    <title>	Manage Product </title>
+    <script type="text/javascript" src="{{ url_for('static', filename = 'js/validateForm.js') }}"></script>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/home.css') }} />
+    <link rel="stylesheet" href={{ url_for('static', filename='css/topStyle.css') }} />
+    <link rel="stylesheet" href={{ url_for('static', filename='css/bodyGeneral.css')}} />
+    <link rel="stylesheet" href={{ url_for('static', filename='css/footer.css') }} />
+    <link rel="stylesheet" href={{ url_for('static', filename='css/mgrupdate.css') }} />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class = "container">
+    <div id="title">
+            <a href="/managerpage/mgrlogout">
+                <img id="logo" src= {{ url_for('static', filename='images/logo.png') }} />
+            </a>
+            <div class="home_btn">
+                <a href="/managerpage/mgrroot">
+                    <strong>HOME~</strong>
+                </a>
+            </div>
+            <div class = "Search">
+                <form>
+		            <input id="searchBox" type="text" name="searchQuery" placeholder="SEARCH....">
+		            <button id="searchButton" type="submit" value="Search"></button>
+		        </form>
+            </div>
+
+        {% if not loggedIn %}
+        <div id="signInButton">
+            <img id = "client " src= {{ url_for('static', filename='images/client.png')}}/>
+            <a class="link" href="/managerpage/mgrloginForm">SIGN IN</a>
+        </div>
+        {% else %}
+        <div class="dropdown">
+            <button class="dropbtn">Hello, <br>{{firstName}}</button>
+            <div class="dropdown-content">
+                <a href="/managerpage/manageproductForm">Update Product</a>
+                <a href="/managerpage/managestockForm">Manage Inventory</a>
+                <a href="/managerpage/managedeleteForm">Delete Product</a>
+                <a href="/managerpage/manageinfoForm">Update Information</a>
+                <a href="/managerpage/statisticsForm">Data Aggregation</a>
+                <hr>
+                <a href="/managerpage/mgrlogout">Sign Out</a>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    <div class="display_frame">
+    <h1>Update Information</h1>
+    <div id = "update_frame">
+        <form action="/managerpage/mgrregister" method="POST" onsubmit="return validate()">
+            <p><label class="label_input">Product ID</label><input type="integer" name="productId" class="text_field"></p>
+            <P><label class="label_input">Product Name</label><input type="text" name="name" class="text_field"></p>
+            <p><label class="label_input">Inventory</label><input type="real" name="inventory" class="text_field"></p>
+            <p><label class="label_input">Price</label><input type="real" name="price" class="text_field"></p>
+            <p><label class="label_input">Description</label><input type="text" name="description" class="text_field"></p>
+            <p><label class="label_input">Image</label><input type="text" name="image" class="text_field"></p>
+            <p><label class="label_input">ProductKind ID</label><input type="integer" name="productKindId" class="text_field"></p>
+            <p><label class="label_input">Scent ID</label><input type="integer" name="scent_id" class="text_field"></p>
+            <div id="login_control">
+                <p><input type="submit" value="Update" id = btn_update></p>
+            </div>
+            <a href="/managerpage/mgrroot">Return</a>
+        </form>
+    </div>
+    </div>
+    <footer>
+        <div class="footer_container">
+            <p>@2022 INFSCI 2710 GROUP PROJECT</p>
+        </div>
+    </footer>
+    </div>
+
+</body>
+</html>
+
+
