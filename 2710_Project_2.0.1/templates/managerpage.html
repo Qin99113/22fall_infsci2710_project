@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta name="viewport" content="width=1024">
+    <title>Welcome</title>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/home.css') }} />
+    <link rel="stylesheet" href={{url_for('static', filename='css/bodyGeneral.css')}} />
+    <link rel="stylesheet" href={{ url_for('static', filename='css/topStyle.css') }} />
+    <link rel="stylesheet" href={{ url_for('static', filename='css/footer.css') }} />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="container">
+        <div id="title">
+            <a href="/managerpage/mgrlogout">
+                <img id="logo" src= {{ url_for('static', filename='images/logo.png') }} />
+            </a>
+            <div class="home_btn">
+                <a href="/managerpage/mgrroot">
+                    <strong>HOME~</strong>
+                </a>
+            </div>
+            <div class = "Search">
+                <form>
+		            <input id="searchBox" type="text" name="searchQuery" placeholder="SEARCH....">
+		            <button id="searchButton" type="submit" value="Search"></button>
+		        </form>
+            </div>
+
+            {% if not loggedIn %}
+            <div id="signInButton">
+                <img id = "client " src= {{ url_for('static', filename='images/client.png')}}/>
+                <a class="link" href="/managerpage/mgrloginForm">SIGN IN</a>
+            </div>
+            {% else %}
+            <div class="dropdown">
+                <button class="dropbtn">Hello, <br>{{firstName}}</button>
+                <div class="dropdown-content">
+                    <a href="/managerpage/manageproductForm">Update Product</a>
+                    <a href="/managerpage/managestockForm">Manage Inventory</a>
+                    <a href="/managerpage/managedeleteForm">Delete Product</a>
+                    <a href="/managerpage/manageinfoForm">Update Information</a>
+                    <a href="/managerpage/statisticsForm">Data Aggregation</a>
+                    <hr>
+                    <a href="/managerpage/mgrlogout">Sign Out</a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+        <div class="display">
+            <div class="displayMenu">
+                <div class="by_product">
+                        <buttom class ="naviItems" > Shop by Products </buttom>
+                        <div class="product_kind">
+                            <ul>
+                                {% for row in categoryData %}
+                                    <li><a href="/mgrdisplayCategory?productKindId={{row[0]}}">{{row[1]}}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                </div>
+                <div class="by_scent">
+                        <buttom class ="naviItems" > Shop by Scent </buttom>
+                        <div class="scent">
+                            <ul>
+                                {% for row in scentData %}
+                                    <li><a href="/mgrdisplayScent?scent_id={{row[0]}}">{{row[1]}}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                </div>
+                <div class="stores">
+                        <buttom class ="naviItems" > Our Stores </buttom>
+                </div>
+                <div class="contact">
+                        <buttom class ="naviItems" onclick = window.location.href="/contactUs.html"> Contact us </buttom>
+                </div>
+            </div>
+
+            <div class="displayItem">
+                <h2>You May Also Like</h2>
+                {% for data in itemData %}
+                <table>
+                    <tr id="productId">
+                        {% for row in data %}
+                        <td>
+                            {{row[0]}}
+                        </td>
+                        {% endfor %}
+                    </tr>
+                    <tr id="productName">
+                        {% for row in data %}
+                        <td>
+                            {{row[1]}}
+                        </td>
+                        {% endfor %}
+                    </tr>
+                    <tr id="productImage">
+                        {% for row in data %}
+                        <td>
+                            <a href="/mgrproductDescription?productId={{row[0]}}">
+                                <img src={{ url_for('static', filename='uploads/' + row[4]) }} id="itemImage" />
+                            </a>
+                        </td>
+                        {% endfor %}
+                    </tr>
+                    <tr id="productPrice">
+                        {% for row in data %}
+                        <td>
+                            ${{row[2]}}
+                        </td>
+                        {% endfor %}
+                    </tr>
+                </table>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer_container">
+            <p>@2022 INFSCI 2710 GROUP PROJECT</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
+
