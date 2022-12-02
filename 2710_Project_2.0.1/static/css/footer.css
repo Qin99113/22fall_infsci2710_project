@@ -1,0 +1,19 @@
+footer{
+
+    background: cornsilk;
+    display: block;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: 10%;
+    z-index: 10000;
+
+}
+.footer_container p{
+    position: relative;
+    top: 20px;
+    color: coral;
+    text-align: center;
+    font-family: "Times New Roman";
+    font-size: 20px;
+}
