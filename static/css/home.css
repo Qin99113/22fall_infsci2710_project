@@ -1,0 +1,164 @@
+html,body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+body{
+    width: 100%;
+    background: blanchedalmond;
+}
+
+.container{
+    position: relative;
+    width:100%;
+    height: 100%;
+    overflow:scroll;
+
+}
+.display {
+
+	margin-bottom: 120px;
+}
+#itemImage {
+	height: 300px;
+	width: 320px;
+}
+
+table {
+	border-spacing: 20px;
+    width: 80%;
+    margin: auto;
+    float: left;
+    text-align: center;
+
+
+}
+table tbody{
+    float: left;
+}
+
+
+#productName {
+	text-align: center;
+	font-weight: bold;
+}
+
+#productPrice {
+	text-align: center;
+}
+
+.displayMenu{
+    background: bisque;
+    width: 98%;
+    height: 100px;
+    position: fixed;
+    top: 84px;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    z-index: 1;
+    transform: scale(1);
+
+}
+
+
+.naviItems{
+	background-color: burlywood;
+	position: relative;
+    top: 40px;
+    color: white;
+    width: 100%;
+    padding: 30px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+
+.product_kind {
+	display: none;
+    position: absolute;
+    top: 100px;
+    left: 15px;
+    width: 172.9px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 10000;
+}
+.scent{
+    display: none;
+    position: absolute;
+    width: 154px;
+    top: 100px;
+    left: 463px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 10000;
+
+}
+
+.product_kind a{
+	color: black;
+    font-family: "Times New Roman";
+    font-size: medium;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.scent a{
+	color: black;
+    font-family: "Times New Roman";
+    font-size: medium;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.product_kind a:hover{
+    background-color: #f1f1f1
+
+}
+.scent a:hover{
+    background-color: #f1f1f1
+
+}
+
+
+.by_scent:hover .scent{
+    display: block;
+}
+.by_product:hover .product_kind{
+    display: block;
+}
+
+.by_product:hover .naviItems{
+    background-color:chocolate;
+}
+.by_scent:hover .naviItems{
+    background-color:chocolate;
+}
+.stores:hover .naviItems{
+    background-color:chocolate;
+}
+
+.contact:hover .naviItems{
+    background-color:chocolate;
+}
+
+
+.displayItem{
+    position: relative;
+    top:214px;
+    width: 98%;
+    margin: auto;
+    overflow: scroll;
+
+}
+
+#msg{
+    position: absolute;
+    left: 50%;
+    color: saddlebrown;
+}
+
+

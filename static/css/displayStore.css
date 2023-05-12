@@ -1,0 +1,25 @@
+
+
+.display_store_one, .display_store_two{
+    position: relative;
+    top: 20px;
+    width: 100%;
+    height: 50%;
+    display: flex;
+
+}
+
+.display_store_two{
+    top:40px;
+}
+.display_store_one img, .display_info2, .display_info1, .display_store_two img{
+    height:100%;
+    width: 50%;
+
+}
+
+.display_info1, .display_info2 {
+    margin-left: 40px;
+}
+
+

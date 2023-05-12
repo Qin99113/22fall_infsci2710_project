@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Our Stores</title>
+    <link rel="stylesheet" href={{url_for('static', filename='css/bodyGeneral.css')}} />
+    <link rel="stylesheet" href={{url_for('static', filename='css/displayStore.css')}} />
+    <link rel="stylesheet" href={{ url_for('static', filename='css/topStyle.css') }} />
+    <link rel="stylesheet" href={{ url_for('static', filename='css/footer.css') }} />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div id="title">
+            <a href="/managerpage/mgrlogout">
+                <img id="logo" src= {{ url_for('static', filename='images/logo.png') }} />
+            </a>
+            <div class="home_btn">
+                <a href="/managerpage/mgrroot">
+                    <strong>HOME~</strong>
+                </a>
+            </div>
+            <div class = "Search">
+                <form>
+		            <input id="searchBox" type="text" name="searchQuery" placeholder="SEARCH....">
+		            <button id="searchButton" type="submit" value="Search"></button>
+		        </form>
+            </div>
+
+            {% if not loggedIn %}
+            <div id="signInButton">
+                <img id = "client " src= {{ url_for('static', filename='images/client.png')}}/>
+                <a class="link" href="/managerpage/mgrloginForm">SIGN IN</a>
+            </div>
+            {% else %}
+            <div class="dropdown">
+                <button class="dropbtn">Hello, <br>{{firstName}}</button>
+                <div class="dropdown-content">
+                <a href="/managerpage/addItemForm">Add Product</a>
+                <a href="/managerpage/managedeleteForm">Delete Product</a>
+                <a href="/managerpage/managestockForm">Manage Inventory</a>
+                <a href="/managerpage/statisticsForm">Data Aggregation</a>
+                <hr>
+                <a href="/managerpage/mgrlogout">Sign Out</a>
+                </div>
+            </div>
+        {% endif %}
+        </div>
+    <div class = "display_store">
+        <div class = "display_store_one">
+            <img src={{ url_for('static', filename='images/store2.png') }}>
+            <div class="display_info1">
+                <h2>SF - North Beach</h2>
+                <h3>Hours:</h3>
+                <p>Open Sun, Wed, Thurs,</p>
+                <p>11am-6pm Open Fri - Sat, 11am-7pm</p>
+                <p>CLOSED: Monday + Tuesday</p>
+                <p>1422 Grant Ave San Francisco, CA 94133</p>
+                <p>📞 415-872-6194</p>
+                <p> ✉️ sanfrancisco@pfcandleco.com</p>
+            </div>
+        </div>
+        <div class = "display_store_two">
+            <img src={{ url_for('static', filename='images/store1.png') }}>
+            <div class="display_info2">
+                <h2>LA - Echo Park Flagship</h2>
+                <h3>Hours:</h3>
+                <p>Open Sun, Wed, Thurs,</p>
+                <p>11am-6pm Open Fri - Sat, 11am-7pm</p>
+                <p>CLOSED: Monday + Tuesday</p>
+                <p>2205 Sunset Blvd Los Angeles, CA 90026</p>
+                <p>📞 323-284-8431</p>
+                <p> ✉️ ep@pfcandleco.com</p>
+
+        </div>
+
+
+    </div>
+    <footer>
+        <div class="footer_container">
+            <p>@2022 INFSCI 2710 GROUP PROJECT</p>
+            <p>Shop our california stores: P.F. Candle Co.. P. F. Candle Co. (n.d.). Retrieved December 4, 2022, from https://pfcandleco.com/pages/stores </p>>
+        </div>
+    </footer>
+
+</body>
+</html>

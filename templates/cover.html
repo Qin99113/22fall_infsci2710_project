@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cover</title>
+    <link rel="stylesheet" href="../static/css/cover.css">
+    <link rel="stylesheet" href={{url_for('static', filename='css/bodyGeneral.css')}} />
+    <link rel="stylesheet" href={{ url_for('static', filename='css/topStyle.css') }}/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+</head>
+<body>
+<div id="title">
+    <a href="/logout">
+        <img id="logo" src={{ url_for('static', filename='images/logo.png') }}/>
+    </a>
+    <div class="home_btn">
+                <a href="/home">
+                    <strong>HOME~</strong>
+                </a>
+            </div>
+    <div class="Search">
+        <form>
+            <input id="searchBox" type="text" name="searchQuery" placeholder="SEARCH....">
+            <button id="searchButton" type="submit" value="Search"></button>
+        </form>
+    </div>
+
+{#    {% if not loggedIn %}#}
+    <div id="signInButton">
+        <img id="client " src= {{ url_for('static', filename='images/client.png') }}/>
+        <a class="link" href="/loginForm">SIGN IN</a>
+    </div>
+{#    {% else %}#}
+{#        <div class="dropdown">#}
+{#            <button class="dropbtn">Hello, <br>{{ firstName }}</button>#}
+{#            <div class="dropdown-content">#}
+{#                <a href="/account/orders">Your orders</a>#}
+{#                <a href="/account/profile">Your profile</a>#}
+{#                <hr>#}
+{#                <a href="/logout">Sign Out</a>#}
+{#            </div>#}
+{#        </div>#}
+{#    {% endif %}#}
+    <div id="cart">
+        <a class="link" href="/cart">
+            <img src={{ url_for('static', filename='images/shoppingCart.png') }} id="cartIcon"/>
+            CART {{ noOfItems }}
+        </a>
+    </div>
+</div>
+<!-- partial:index.partial.html -->
+<div id="texture-container">
+    <!-- div that will hold our WebGL canvas -->
+    <div id="canvas"></div>
+
+    <!-- div used to create our plane -->
+    <div class="plane">
+
+        <img id="texture0"
+             src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimages.uiiiuiii.com%2Fwp-content%2Fuploads%2F2020%2F12%2Fi-vi-ww1219-1-02.jpg&refer=http%3A%2F%2Fimages.uiiiuiii.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1672290419&t=b21dac1ca026aedbf9a5c83ba6ac3090"
+             crossorigin="anonymous"/>
+        <img id="texture1"
+             src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.alicdn.com%2Fbao%2Fuploaded%2Fi4%2F772969297%2FO1CN01euWo5e2IY4ndgB3Ey_%21%21772969297.jpg&refer=http%3A%2F%2Fimg.alicdn.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1672290419&t=cf64c8404b3884d770b7e52ddf166eb1"
+             crossorigin="anonymous"/>
+        <img id="texture2"
+             src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20171225%2F8dc7ce982df34a9390ac3c709b8bca96.jpeg&refer=http%3A%2F%2F5b0988e595225.cdn.sohucs.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1672290419&t=efa5ba429273c98960fcb73f096842ae"
+             crossorigin="anonymous"/>
+    </div>
+
+    <div class="titles__slide">
+        <div class="title__slide-1 title__slide">
+            <div class="text-overflow"><span class="text__item-1 text__item">Live your dream</span></div>
+            <div class="text-overflow"><span class="text__item-2 text__item">Be good, be bad, </span></div>
+            <div class="text-overflow"><span class="text__item-3 text__item">Just be yourself</span></div>
+
+        </div>
+        <div class="title__slide-2 title__slide is-hidden">
+            <div class="text-overflow"><span class="text__item-1 text__item">If its out there, </span></div>
+            <div class="text-overflow"><span class="text__item-2 text__item">we will find it</span></div>
+            <div class="text-overflow"><span class="text__item-3 text__item">Miracle, you are magic</span></div>
+        </div>
+        <div class="title__slide-3 title__slide is-hidden">
+            <div class="text-overflow"><span class="text__item-1 text__item">We are one, </span></div>
+            <div class="text-overflow"><span class="text__item-2 text__item">for all for ever</span></div>
+            <div class="text-overflow"><span class="text__item-3 text__item">Good to the last drop</span></div>
+        </div>
+    </div>
+</div>
+
+<script id="vs" type="x-shader/x-vertex">
+  #ifdef GL_ES
+    precision mediump float;
+    #endif
+
+    uniform float uTime;
+
+    // those are the mandatory attributes that the lib sets
+    attribute vec3 aVertexPosition;
+    attribute vec2 aTextureCoord;
+
+    // those are mandatory uniforms that the lib sets and that contain our model view and projection matrix
+    uniform mat4 uMVMatrix;
+    uniform mat4 uPMatrix;
+
+    uniform mat4 currentTextureMatrix;
+    uniform mat4 nextTextureMatrix;
+
+    // if you want to pass your vertex and texture coords to the fragment shader
+    varying vec3 vVertexPosition;
+    varying vec2 currentTextureCoord;
+    varying vec2 nextTextureCoord;
+    varying float vTime;
+
+    void main() {
+        vec3 vertexPosition = aVertexPosition;
+        vTime = uTime;
+      // set the varyings
+        currentTextureCoord = (currentTextureMatrix * vec4(aTextureCoord, 0., 1.)).xy;
+        nextTextureCoord = (nextTextureMatrix * vec4(aTextureCoord, 0., 1.)).xy;
+        vVertexPosition = vertexPosition;
+
+        gl_Position = uPMatrix * uMVMatrix * vec4(vertexPosition, 1.0);
+    }
+
+
+
+
+</script>
+<script id="fs" type="x-shader/x-fragment">
+  #ifdef GL_ES
+    precision mediump float;
+    #endif
+
+    #define TAU 6.28318530718
+    #define PI 3.14159265359
+    #define S(a,b,n) smoothstep(a,b,n)
+    #define NUM_OCTAVES 5
+
+    varying float vTime;
+    uniform float uProgress;
+    uniform vec2 uReso;
+    uniform vec2 uMouse;
+
+    // get our varyings
+    varying vec3 vVertexPosition;
+    varying vec2 currentTextureCoord;
+    varying vec2 nextTextureCoord;
+
+    // the uniform we declared inside our javascript
+
+    // our texture sampler (default name, to use a different name please refer to the documentation)
+    uniform sampler2D currentTexture;
+    uniform sampler2D nextTexture;
+
+    float rand(vec2 n) {
+      return fract(sin(dot(n, vec2(12.9898, 4.1414))) * 43758.5453);
+    }
+
+    float noise(vec2 p){
+      vec2 ip = floor(p);
+      vec2 u = fract(p);
+      u = u*u*(3.0-2.0*u);
+
+      float res = mix(
+        mix(rand(ip),rand(ip+vec2(1.0,0.0)),u.x),
+        mix(rand(ip+vec2(0.0,1.0)),rand(ip+vec2(1.0,1.0)),u.x),u.y);
+      return res*res;
+    }
+
+    float fbm(vec2 x) {
+      float v = 0.0;
+      float a = 0.5;
+      vec2 shift = vec2(100);
+      // Rotate to reduce axial bias
+        mat2 rot = mat2(cos(0.5), sin(0.5), -sin(0.5), cos(0.50));
+      for (int i = 0; i < NUM_OCTAVES; ++i) {
+        v += a * noise(x);
+        x = rot * x * 2.0 + shift;
+        a *= 0.5;
+      }
+      return v;
+    }
+
+    void main(){
+        vec2 uv0 = currentTextureCoord;
+        vec2 uv1 = nextTextureCoord;
+
+        float outer_percent = 0.2;
+        float tolerance = 0.5;
+        float progress = uProgress + uProgress * tolerance;
+
+        vec2 st = (gl_FragCoord.xy - 0.5 * uReso) / min(uReso.y, uReso.y);
+        vec2 mouse = (uMouse - 0.5 * uReso) / min(uReso.y, uReso.y);
+
+        vec2 center = -st;
+
+        float circ = length(st);
+        float dist = clamp(1.0 - circ / 1.0, 0.0, 1.0);
+
+        dist = S(circ * tolerance, circ + outer_percent * tolerance, progress);
+
+        vec4 color = texture2D(currentTexture, uv0 + dist * center * 0.5);
+        vec4 color1 = texture2D(nextTexture, uv1 + (1.0 - dist) * st * 0.5);
+
+        gl_FragColor = mix(color, color1, dist);
+        //gl_FragColor = vec4(vec3(dist), 1.0);
+    }
+
+
+
+
+</script>
+<!-- partial -->
+<script src='https://www.curtainsjs.com/build/curtains.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.0.4/gsap.min.js'></script>
+<script src="../static/js/cover.js"></script>
+</body>
+</html>

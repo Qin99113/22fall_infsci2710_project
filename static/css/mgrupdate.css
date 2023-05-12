@@ -1,0 +1,107 @@
+#update_frame{
+    position: relative;
+    top: 120px;
+    width: 40%;
+    height: 55%;
+    padding: 13px;
+    float: right;
+    margin-left: 0px;
+
+
+    background-color: rgba(240, 255, 255, 0.5);
+
+    border-radius: 40px;
+    text-align: center;
+    overflow:scroll;
+}
+.display_frame{
+    display: flex;
+    width: 100%;
+}
+.display_info{
+    position: relative;
+    top: 120px;
+    width:50%;
+    height: 75%;
+    float:left;
+    overflow: scroll;
+}
+.display_info table tr td, .display_info table tr th {
+    text-align: left;
+    font-size: 20px;
+    font-family: "Times New Roman";
+}
+h1{
+    position: absolute;
+    top:84px;
+    left: 30%;
+    color:  burlywood;
+    margin: 10px;
+    font-family: "Palace Script MT";
+    font-size: 60px;
+    text-align: center;
+
+}
+h2{
+    position: absolute;
+    top:160px;
+    left: 39%;
+    color:  saddlebrown;
+    margin: 10px;
+    font-family: "Palace Script MT";
+    font-size: 30px;
+    text-align: center;
+
+}
+#update_frame form{
+    position: relative;
+    top:5px;
+}
+
+form p > * {
+    display: inline-block;
+    vertical-align: middle;
+
+
+
+}
+
+.label_input {
+    font-size: 14px;
+    font-family: "Times New Roman";
+
+    width: 200px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+
+    color: white;
+    background-color: burlywood;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.text_field {
+    width: 200px;
+    height: 40px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: 0;
+}
+
+
+#btn_update {
+    font-size: 14px;
+    font-family: "Times New Roman";
+
+    width: 120px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+
+    color: white;
+    background-color: burlywood;
+    border-radius: 6px;
+    border: 0;
+
+}

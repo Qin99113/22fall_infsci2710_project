@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/static/js/echarts.js"></script>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/bodyGeneral.css') }}/>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/footer.css') }}/>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/topStyle.css') }}/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <style>
+        .display_frame{
+            overflow: scroll;
+            height: 100%;
+        }
+
+
+
+        #left {
+            position: absolute;
+            background: cornsilk;
+            top: 198px;
+            left: 200px;
+            width: 1000px;
+            height: 500px;
+        }
+
+        #right {
+            position: absolute;
+            background: cornsilk;
+            top: 868px;
+            left: 200px;
+            width: 1000px;
+            height: 500px;
+
+        }
+
+
+
+        #uppermiddle {
+            position: absolute;
+            background-color: sandybrown;
+            top: 30px;
+            left: 100px;
+            width: 1200px;
+            height: 120px;
+            border-radius: 30px;
+        }
+
+        .txt1 {
+            width: 50%;
+            float: left;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: gold;
+            font-size: small;
+
+        }
+
+        .txt2 {
+            width: 50%;
+            float: left;
+            font-family: 'Operator Mono', 'Source Code Pro', Menlo, Monaco, Consolas, Courier New, monospace;
+            font-size: small;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #f9f9f9;
+        }
+
+        .txt2 h2 {
+            margin: 0;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div id="title">
+            <a href="/managerpage/mgrlogout">
+                <img id="logo" src= {{ url_for('static', filename='images/logo.png') }} />
+            </a>
+            <div class="home_btn">
+                <a href="/managerpage/mgrroot">
+                    <strong>HOME~</strong>
+                </a>
+            </div>
+            <div class = "Search">
+                <form>
+		            <input id="searchBox" type="text" name="searchQuery" placeholder="SEARCH....">
+		            <button id="searchButton" type="submit" value="Search"></button>
+		        </form>
+            </div>
+
+            {% if not loggedIn %}
+            <div id="signInButton">
+                <img id = "client " src= {{ url_for('static', filename='images/client.png')}}/>
+                <a class="link" href="/managerpage/mgrloginForm">SIGN IN</a>
+            </div>
+            {% else %}
+            <div class="dropdown">
+                <button class="dropbtn">Hello, <br>{{firstName}}</button>
+                <div class="dropdown-content">
+                <a href="/managerpage/addItemForm">Add Product</a>
+                <a href="/managerpage/managedeleteForm">Delete Product</a>
+                <a href="/managerpage/managestockForm">Manage Inventory</a>
+                <a href="/managerpage/statisticsForm">Data Aggregation</a>
+                <hr>
+                <a href="/managerpage/mgrlogout">Sign Out</a>
+                </div>
+            </div>
+        {% endif %}
+        </div>
+
+<div class="display_frame">
+    <div id="left">
+        <script type="text/javascript">
+            // 基于准备好的dom，初始化echarts实例
+            var myChart = echarts.init(document.getElementById('left'));
+
+            option = {
+                legend: {},
+                tooltip: {
+                    trigger: 'axis',
+                    showContent: false
+                },
+                dataset: {
+                    source: [
+                        ['product', '2012', '2013', '2014', '2015', '2016', '2017'],
+                        ['BOTANICAL WAX CANDLES', 38, 30, 88.7, 70.1, 53.4, 85.1],
+                        ['REED DIFFUSERS', 44, 51.4, 55.1, 53.3, 73.8, 68.7],
+                        ['ROOM & LINEN SPRAYS', 77, 62.2, 69.5, 36.4, 45.2, 32.5],
+                        ['ALL INCENSE', 47, 37.1, 41.2, 18, 33.9, 49.1],
+                        ['CAR FRAGRANCE', 28, 3.1, 25.2, 36, 34.9, 23.1],
+                        ['HAND & BODY WASH', 74, 35, 46, 11, 6, 21]
+                    ]
+                },
+                xAxis: {type: 'category'},
+                yAxis: {gridIndex: 0},
+                grid: {top: '55%'},
+                series: [
+                    {
+                        type: 'line',
+                        smooth: true,
+                        seriesLayoutBy: 'row',
+                        emphasis: {focus: 'series'}
+                    },
+                    {
+                        type: 'line',
+                        smooth: true,
+                        seriesLayoutBy: 'row',
+                        emphasis: {focus: 'series'}
+                    },
+                    {
+                        type: 'line',
+                        smooth: true,
+                        seriesLayoutBy: 'row',
+                        emphasis: {focus: 'series'}
+                    },
+                    {
+                        type: 'line',
+                        smooth: true,
+                        seriesLayoutBy: 'row',
+                        emphasis: {focus: 'series'}
+                    },
+                    {
+                        type: 'line',
+                        smooth: true,
+                        seriesLayoutBy: 'row',
+                        emphasis: {focus: 'series'}
+                    },
+                    {
+                        type: 'line',
+                        smooth: true,
+                        seriesLayoutBy: 'row',
+                        emphasis: {focus: 'series'}
+                    },
+                    {
+                        type: 'pie',
+                        id: 'pie',
+                        radius: '30%',
+                        center: ['50%', '25%'],
+                        emphasis: {
+                            focus: 'self'
+                        },
+                        label: {
+                            formatter: '{b}: {@2012} ({d}%)'
+                        },
+                        encode: {
+                            itemName: 'product',
+                            value: '2012',
+                            tooltip: '2012'
+                        }
+                    }
+                ]
+            };
+            myChart.on('updateAxisPointer', function (event) {
+                const xAxisInfo = event.axesInfo[0];
+                if (xAxisInfo) {
+                    const dimension = xAxisInfo.value + 1;
+                    myChart.setOption({
+                        series: {
+                            id: 'pie',
+                            label: {
+                                formatter: '{b}: {@[' + dimension + ']} ({d}%)'
+                            },
+                            encode: {
+                                value: dimension,
+                                tooltip: dimension
+                            }
+                        }
+                    });
+                }
+            });
+            myChart.setOption(option);
+        </script>
+    </div>
+    <div id="right">
+        <script type="text/javascript">
+            // 基于准备好的dom，初始化echarts实例
+            var myChart = echarts.init(document.getElementById('right'));
+
+            option = {
+                legend: {},
+                tooltip: {
+                    trigger: 'axis',
+                    showContent: false
+                },
+                dataset: {
+                    source: [
+                        ['product', '2012', '2013', '2014', '2015', '2016', '2017'],
+                        ['MOSS', 56.5, 30, 88.7, 70.1, 53.4, 85.1],
+                        ['LAVENDER', 51.1, 51.4, 55.1, 53.3, 73.8, 68.7],
+                        ['ROSE', 40.1, 62.2, 69.5, 36.4, 45.2, 32.5],
+                        ['TOBACCO', 25.2, 37.1, 41.2, 18, 33.9, 49.1],
+                        ['VANILLA', 13.2, 3.1, 25.2, 36, 34.9, 23.1],
+                        ['GRAPEFRUIT', 61, 35, 46, 11, 6, 21],
+                        ['GOLDEN', 14, 25, 35, 22, 34, 53],
+                        ['PATCHOULI SWEETGRASS', 21.1, 24.4, 45, 67, 45, 54]
+                    ]
+                },
+                xAxis: {type: 'category'},
+                yAxis: {gridIndex: 0},
+                grid: {top: '55%'},
+                series: [
+                    {
+                        type: 'line',
+                        smooth: true,
+                        seriesLayoutBy: 'row',
+                        emphasis: {focus: 'series'}
+                    },
+                    {
+                        type: 'line',
+                        smooth: true,
+                        seriesLayoutBy: 'row',
+                        emphasis: {focus: 'series'}
+                    },
+                    {
+                        type: 'line',
+                        smooth: true,
+                        seriesLayoutBy: 'row',
+                        emphasis: {focus: 'series'}
+                    },
+                    {
+                        type: 'line',
+                        smooth: true,
+                        seriesLayoutBy: 'row',
+                        emphasis: {focus: 'series'}
+                    },
+                    {
+                        type: 'line',
+                        smooth: true,
+                        seriesLayoutBy: 'row',
+                        emphasis: {focus: 'series'}
+                    },
+                    {
+                        type: 'line',
+                        smooth: true,
+                        seriesLayoutBy: 'row',
+                        emphasis: {focus: 'series'}
+                    },
+                    {
+                        type: 'line',
+                        smooth: true,
+                        seriesLayoutBy: 'row',
+                        emphasis: {focus: 'series'}
+                    },
+                    {
+                        type: 'line',
+                        smooth: true,
+                        seriesLayoutBy: 'row',
+                        emphasis: {focus: 'series'}
+                    },
+                    {
+                        type: 'pie',
+                        id: 'pie',
+                        radius: '30%',
+                        center: ['50%', '25%'],
+                        emphasis: {
+                            focus: 'self'
+                        },
+                        label: {
+                            formatter: '{b}: {@2012} ({d}%)'
+                        },
+                        encode: {
+                            itemName: 'product',
+                            value: '2012',
+                            tooltip: '2012'
+                        }
+                    }
+                ]
+            };
+            myChart.on('updateAxisPointer', function (event) {
+                const xAxisInfo = event.axesInfo[0];
+                if (xAxisInfo) {
+                    const dimension = xAxisInfo.value + 1;
+                    myChart.setOption({
+                        series: {
+                            id: 'pie',
+                            label: {
+                                formatter: '{b}: {@[' + dimension + ']} ({d}%)'
+                            },
+                            encode: {
+                                value: dimension,
+                                tooltip: dimension
+                            }
+                        }
+                    });
+                }
+            });
+            myChart.setOption(option);
+        </script>
+    </div>
+    <div id="uppermiddle">
+        <div class="txt1"><h1>{{ bestSeller }}</h1></div>
+        <div class="txt1"><h1>{{ bestRegion }}</h1></div>
+        <div class="txt2"><h2>Best seller</h2></div>
+        <div class="txt2"><h2>Best region</h2></div>
+    </div>
+</div>
+
+
+
+
+
+{#<footer>#}
+{#    <div class="footer_container">#}
+{#        <p>@2022 INFSCI 2710 GROUP PROJECT</p>#}
+{#    </div>#}
+{#</footer>#}
+
+</body>
+</html>
