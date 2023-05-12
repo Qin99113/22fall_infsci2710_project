@@ -18,3 +18,10 @@ A simple E-commerce website using Flask.
 4. Enter localhost:5000 in the browser
 
 
+## Sample User ##
+1. Email: sampleuser@sample.com
+   Password: 123456
+
+## Sample Manager ##
+1. Email: manager2@shopping.com
+   Password: 123456
