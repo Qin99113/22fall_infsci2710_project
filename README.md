@@ -1,11 +1,13 @@
-# Shopping Cart  
-A simple E-commerce website using Flask.
+# Database System for E-Commerce 
+A complete E-commerce website using Flask.
 
+## Introduction ##
+Please open '2710ProjectReport 2.0'
   
 ## Dependencies ##
 1. Python3
 2. Flask
-3. Sqlite
+3. Mysql
 
 ## How to run ##
 1. Run main.py
